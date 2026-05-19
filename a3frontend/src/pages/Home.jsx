@@ -33,22 +33,22 @@ function Home() {
 
   const testimonials = [
     {
-      name: "Priya Sharma",
+      name: "Hasina",
       rating: 5,
       text: "My hair has never been healthier! The A³ hair oil reduced my hair fall significantly within just 3 weeks.",
-      image: "https://i.pravatar.cc/150?img=1"
+      image: "/hasina.jpeg"
     },
     {
-      name: "Rajesh Kumar",
+      name: "Tawfeeq",
       rating: 5,
       text: "Amazing product! Natural ingredients that actually work. My hair feels thicker and stronger.",
-      image: "https://i.pravatar.cc/150?img=13"
+      image: "/tawfeeq.jpeg"
     },
     {
-      name: "Anita Desai",
+      name: "Rayaan",
       rating: 5,
       text: "Best hair oil I've ever used. The herbal fragrance is divine and results are visible!",
-      image: "https://i.pravatar.cc/150?img=5"
+      image: "/ryaan.jpeg"
     }
   ];
 
