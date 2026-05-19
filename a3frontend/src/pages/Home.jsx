@@ -117,7 +117,7 @@ function Home() {
             {/* Trust Indicators */}
             <div className="flex flex-wrap justify-center gap-8 pt-12 text-white">
               <div className="text-center">
-                <div className="text-3xl font-bold text-yellow-300">10,000+</div>
+                <div className="text-3xl font-bold text-yellow-300">50+</div>
                 <div className="text-sm text-neutral-200">Happy Customers</div>
               </div>
               <div className="text-center">
