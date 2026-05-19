@@ -1,0 +1,104 @@
+/* ══════════════════════════════════════════
+   A³ — 3D Cursor (arrow-shaped character)
+   ══════════════════════════════════════════ */
+
+/* Hide native cursor on EVERY element */
+html,
+body,
+* {
+  cursor: none !important;
+}
+
+.a3-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2147483647;
+  pointer-events: none !important;
+  user-select: none;
+  /*
+    The image is an arrow cursor shape.
+    The tip of the arrow is at the TOP-LEFT of the image.
+    So we don't offset — translate(0, 0) keeps the tip at mouse position.
+  */
+  transform: translate(-8%, -6%);
+  transition: opacity 0.25s ease;
+  will-change: left, top;
+}
+
+.a3-cursor-img {
+  display: block;
+  pointer-events: none !important;
+  width: 68px;
+  height: 68px;
+  object-fit: contain;
+  -webkit-user-drag: none;
+  user-select: none;
+  filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.25));
+  animation: cursorBob 3s ease-in-out infinite;
+  transition:
+    width 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Hover over clickable elements — grows */
+.a3-cursor.is-pointer .a3-cursor-img {
+  width: 82px;
+  height: 82px;
+  animation: cursorExcited 0.5s ease-in-out infinite alternate;
+}
+
+/* Click — squish */
+.a3-cursor.is-clicking .a3-cursor-img {
+  width: 58px;
+  height: 58px;
+  animation: cursorClick 0.18s ease-out forwards;
+}
+
+/* Mouse left window */
+.a3-cursor.is-hidden {
+  opacity: 0;
+}
+
+/* ── Animations ── */
+@keyframes cursorBob {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(1deg);
+  }
+}
+
+@keyframes cursorExcited {
+  0% {
+    transform: translateY(0px) rotate(-2deg) scale(1);
+  }
+  100% {
+    transform: translateY(-7px) rotate(2deg) scale(1.04);
+  }
+}
+
+@keyframes cursorClick {
+  0% {
+    transform: scale(1, 1) translateY(0);
+  }
+  35% {
+    transform: scale(1.1, 0.88) translateY(3px);
+  }
+  100% {
+    transform: scale(1, 1) translateY(0);
+  }
+}
+
+/* ── Touch / Mobile: restore default cursor ── */
+@media (hover: none) and (pointer: coarse) {
+  .a3-cursor {
+    display: none !important;
+  }
+  html,
+  body {
+    cursor: auto !important;
+  }
+}
